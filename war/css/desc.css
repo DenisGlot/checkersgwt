@@ -1,0 +1,95 @@
+#descContainer {
+    position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#descTable {
+    background-color: #E7CFA9;
+    border: 1px solid #7C6249;
+    margin: 0 auto;
+    width: 444px;
+    height: 444px;
+}
+
+#descTable td {
+    text-align: center;
+    vertical-align: middle;
+    width: 50px;
+}
+
+#descTable td:first-child{
+    width: 20px;
+}
+
+#descTable td:last-child{
+    width: 20px;
+}
+
+#descTable tr:last-child {
+    height: 20px;
+}
+
+#descTable tr:first-child {
+    height: 20px;
+}
+
+#canvasDiv{
+    border: 1px solid #7C6249;
+    top: 20px;
+    width: 400px;
+    height: 400px;
+}
+
+#blockingDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.square_button{
+    width: 100%;
+    height: 100%;
+    background-color: Transparent;
+    border: none;
+}
+
+.square_black{
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-color: #7C6249;
+}
+.square_white{
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-color: #fff4e3;
+}
+
+.new_line{
+    clear: left;
+}
+
+.red {
+    background-color: red;
+}
+div.blackRegular{
+    background-image: url("/images/blackRegular.png");
+}
+div.whiteRegular {
+    background-image:url("/images/whiteRegular.png");
+}
+div.whiteKing {
+    background-image:url("/images/whiteKing.png");
+}
+div.blackKing {
+     background-image:url("/images/blackKing.png");
+}
