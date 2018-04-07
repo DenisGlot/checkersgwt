@@ -1,0 +1,175 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:u="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+        .important {
+            font-weight: bold;
+        }
+    </ui:style>
+    <g:HTMLPanel>
+        Hello,
+        <span class="{style.important}" ui:field="nameSpan"/>
+        <g:Anchor ui:field="goodbyeLink" text="Say good-bye"></g:Anchor>
+        <div id="descContainer">
+            <table id="descTable" cellpadding="0" cellspacing="0" style="width: 444px; height: 444px; background-color: rgb(231, 207, 169); border-color: rgb(124, 98, 73);">
+                <tbody><tr>
+                    <td>&nbsp;</td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                </tr>
+                    <tr>
+                        <td>8</td>
+                        <td id="canvasTd" colspan="8" rowspan="8">
+                            <div id="canvasDiv">
+                                <div class = "square_white"></div>
+                                <div id = "82" class = "square_black blackRegular"><u:Button ui:field="button82" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "84" class = "square_black blackRegular"><u:Button ui:field="button84" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "86" class = "square_black blackRegular"><u:Button ui:field="button86" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "88" class = "square_black blackRegular"><u:Button ui:field="button88" stylePrimaryName="square_button"></u:Button></div>
+                                <div id = "71"  class = "square_black blackRegular"><u:Button ui:field="button71" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "73"  class = "square_black blackRegular"><u:Button ui:field="button73" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "75"  class = "square_black blackRegular"><u:Button ui:field="button75" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "77"  class = "square_black blackRegular"><u:Button ui:field="button77" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div class = "square_white"></div>
+                                <div id = "62" class = "square_black blackRegular"><u:Button ui:field="button62" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "64" class = "square_black blackRegular"><u:Button ui:field="button64" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "66" class = "square_black blackRegular"><u:Button ui:field="button66" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "68" class = "square_black blackRegular"><u:Button ui:field="button68" stylePrimaryName="square_button"></u:Button></div>
+                                <div id = "51"  class = "square_black "><u:Button ui:field="button51" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "53"  class = "square_black "><u:Button ui:field="button53" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "55"  class = "square_black "><u:Button ui:field="button55" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "57"  class = "square_black "><u:Button ui:field="button57" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div class = "square_white"></div>
+                                <div id = "42" class = "square_black "><u:Button ui:field="button42" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "44" class = "square_black "><u:Button ui:field="button44" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "46" class = "square_black "><u:Button ui:field="button46" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "48" class = "square_black "><u:Button ui:field="button48" stylePrimaryName="square_button"></u:Button></div>
+                                <div id = "31"  class = "square_black whiteRegular"><u:Button ui:field="button31" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "33"  class = "square_black whiteRegular"><u:Button ui:field="button33" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "35"  class = "square_black whiteRegular"><u:Button ui:field="button35" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "37"  class = "square_black whiteRegular"><u:Button ui:field="button37" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div class = "square_white"></div>
+                                <div id = "22" class = "square_black whiteRegular"><u:Button ui:field="button22" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "24" class = "square_black whiteRegular"><u:Button ui:field="button24" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "26" class = "square_black whiteRegular"><u:Button ui:field="button26" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "28" class = "square_black whiteRegular"><u:Button ui:field="button28" stylePrimaryName="square_button"></u:Button></div>
+                                <div id = "11"  class = "square_black whiteRegular"><u:Button ui:field="button11" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "13"  class = "square_black whiteRegular"><u:Button ui:field="button13" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "15"  class = "square_black whiteRegular"><u:Button ui:field="button15" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+                                <div id = "17"  class = "square_black whiteRegular"><u:Button ui:field="button17" stylePrimaryName="square_button"></u:Button></div>
+                                <div class = "square_white"></div>
+
+                                <input type="hidden" id="updateBoard" value='false'/>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+
+
+                    <tr>
+                        <td>7</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>6</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>&nbsp;</td>
+
+                        <td>a</td>
+
+                        <td>b</td>
+
+                        <td>c</td>
+
+                        <td>d</td>
+
+                        <td>e</td>
+
+                        <td>f</td>
+
+                        <td>g</td>
+
+                        <td>h</td>
+
+                        <td></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>
