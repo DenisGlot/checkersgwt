@@ -10,7 +10,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
 import java.util.ArrayList;
@@ -130,6 +129,8 @@ public class HomeView extends Composite implements IHomeView {
 	private String oppositeClassSideForRegulars = "blackRegular";
 	
 	List<Button> list = new ArrayList<>(32);
+	List<DivElement> listWhiteNecessary = new ArrayList<>(4);
+	List<DivElement> listBlackNecessary = new ArrayList<>(4);
 	
 	private DivElement previousDiv;
 	private Element attackedDiv;
@@ -190,24 +191,24 @@ public class HomeView extends Composite implements IHomeView {
 					if (previousDiv != null) {
 						previousDiv.removeClassName("red");
 					}
-					
 					currentDiv.addClassName("red");
 					previousDiv = currentDiv;
-					
 				} else if (isAvailableMove(currentDiv)) {
 					previousDiv.removeClassName(classSideForRegulars);
 					previousDiv.removeClassName("red");
-					
 					currentDiv.addClassName(classSideForRegulars);
-					
+					checkNecessaryMoves(currentDiv);
 					previousDiv = null;
 					setTurn();
 				} else if (isAvailableAttack(currentDiv)) {
 					attackedDiv.removeClassName(oppositeClassSideForRegulars);
 					previousDiv.removeClassName(classSideForRegulars);
 					previousDiv.removeClassName("red");
-					
 					currentDiv.addClassName(classSideForRegulars);
+					if(!isNecessaryAttack(currentDiv)) {
+						setTurn();
+					}
+					previousDiv = null;
 				}
 			}
 		}));
@@ -222,24 +223,59 @@ public class HomeView extends Composite implements IHomeView {
 	
 	
 	private boolean isAvailableMove(DivElement currentDiv) {
-		if (previousDiv == null) {
-			return false;
-		}
-		
-		if (isDivChecker(currentDiv)) {
+		if (previousDiv == null || isDivChecker(currentDiv)) {
 			return false;
 		}
 		
 		int idCurrent = Integer.parseInt(currentDiv.getId());
 		int idPrevious = Integer.parseInt(previousDiv.getId());
 		
-		if (isBlack()) {
-			return isAvailableMoveForBlack(idCurrent, idPrevious);
-		} else if (isWhite()) {
-			return isAvailableMoveForWhite(idCurrent, idPrevious);
+		List<DivElement> lestNecessary;
+		boolean white = isWhite();
+		if (white || isBlack()) {
+			lestNecessary = white ? listWhiteNecessary : listBlackNecessary;
+			if (!lestNecessary.isEmpty() ) {
+				if (lestNecessary.contains(currentDiv)) {
+					lestNecessary.remove(currentDiv);
+					return true;
+				}
+				return false;
+			}
+			return white ? isAvailableMoveForWhite(idCurrent, idPrevious) : isAvailableMoveForBlack(idCurrent, idPrevious);
+		}
+		return false;
+	}
+	
+	private void checkNecessaryMoves(DivElement currentDiv) {
+		if(isNecessaryAttack(currentDiv)) {
+			if (isWhite()) {
+				listWhiteNecessary.add(currentDiv);
+			} else if (isBlack()) {
+				listBlackNecessary.add(currentDiv);
+			}
 		}
 		
-		return false;
+		setTurn();
+		
+		int idCurrent = Integer.parseInt(currentDiv.getId());
+		int idLeftDown = idCurrent - 11;
+		int idRightDown = idCurrent - 9;
+		int idLeftUp = idCurrent + 9;
+		int idRightUp = idCurrent + 11;
+		int[] possibleAttackIds = {idLeftDown, idRightDown, idLeftUp, idRightUp};
+		DivElement possibleAttackedDiv;
+		for (int possibleAttackId : possibleAttackIds) {
+			possibleAttackedDiv = DOM.getElementById(String.valueOf(possibleAttackId)).cast();
+			if (isNecessaryAttack(possibleAttackedDiv)) {
+				if (isWhite()) {
+					listWhiteNecessary.add(currentDiv);
+				} else if (isBlack()) {
+					listBlackNecessary.add(currentDiv);
+				}
+			}
+		}
+		
+		setTurn();
 	}
 	
 	private boolean isBlack() {
@@ -263,10 +299,12 @@ public class HomeView extends Composite implements IHomeView {
 		if (previousDiv == null) {
 			return false;
 		}
+		if (isDivChecker(currentDiv)) {
+			return false;
+		}
 		
 		int idCurrent = Integer.parseInt(currentDiv.getId());
 		int idPrevious = Integer.parseInt(previousDiv.getId());
-		
 		int idCurrentTen = idCurrent / 10;
 		int idPreviousTen = idPrevious / 10;
 		int idCurrentOne = idCurrent % 10;
@@ -280,17 +318,8 @@ public class HomeView extends Composite implements IHomeView {
 		Element attackedDiv = DOM.getElementById(String.valueOf(attackedId));
 		
 		if (attackedDiv.hasClassName(oppositeClassSideForRegulars)) {
-			if (isWhite()) {
-				if (idCurrentTen - idPreviousTen == 2) {
-					this.attackedDiv = attackedDiv;
-					return true;
-				}
-			} else if (isBlack()) {
-				if (idPreviousTen - idCurrentTen == 2) {
-					this.attackedDiv = attackedDiv;
-					return true;
-				}
-			}
+			this.attackedDiv = attackedDiv;
+			return true;
 		}
 		
 		return false;
@@ -298,6 +327,36 @@ public class HomeView extends Composite implements IHomeView {
 	
 	private boolean isDivChecker(DivElement currentDiv) {
 		return currentDiv.hasClassName("whiteRegular") || currentDiv.hasClassName("blackRegular");
+	}
+	
+	private boolean isNecessaryAttack(DivElement currentDiv) {
+		int idCurrent = Integer.parseInt(currentDiv.getId());
+		int idLeftDown = idCurrent - 11;
+		int idRightDown = idCurrent - 9;
+		int idLeftUp = idCurrent + 9;
+		int idRightUp = idCurrent + 11;
+		
+		int[] possibleAttackIds = {idLeftDown, idRightDown, idLeftUp, idRightUp};
+		DivElement divWhereAttackingCheckerWillBe = null;
+		for (int possibleAttackId : possibleAttackIds) {
+			Element possibleAttackedDiv = DOM.getElementById(String.valueOf(possibleAttackId));
+			if (possibleAttackedDiv.hasClassName(oppositeClassSideForRegulars)) {
+				if (possibleAttackId == idLeftDown) {
+					divWhereAttackingCheckerWillBe = DOM.getElementById(String.valueOf(idCurrent - 22)).cast();
+				} else if (possibleAttackId == idRightDown) {
+					divWhereAttackingCheckerWillBe = DOM.getElementById(String.valueOf(idCurrent - 18)).cast();
+				} else if (possibleAttackId == idLeftUp) {
+					divWhereAttackingCheckerWillBe = DOM.getElementById(String.valueOf(idCurrent + 18)).cast();
+				} else if (possibleAttackId == idRightUp) {
+					divWhereAttackingCheckerWillBe = DOM.getElementById(String.valueOf(idCurrent + 22)).cast();
+				}
+				
+				if (!isDivChecker(divWhereAttackingCheckerWillBe)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	private void setTurn() {
